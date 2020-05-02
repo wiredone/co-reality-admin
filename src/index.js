@@ -48,8 +48,8 @@ const rrfProps = {
 render(
   <Provider store={store}>
   	<ReactReduxFirebaseProvider {...rrfProps}>
-    	<App />
-	</ReactReduxFirebaseProvider>
+	    <App />
+	  </ReactReduxFirebaseProvider>
   </Provider>,
   document.getElementById('root')
 );
