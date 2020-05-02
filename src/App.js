@@ -27,7 +27,10 @@ export default class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const valid = this.state.password === PASSWORD;
+    // Workaround for mobile devices that capitalise first letter of password
+    const valid =
+      this.state.password === PASSWORD ||
+      this.state.password.charAt(0).toLowerCase() + this.state.password.substring(1) === PASSWORD;
     this.setState({
       loggedIn: valid,
       invalid: !valid
