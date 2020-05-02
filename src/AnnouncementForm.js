@@ -44,6 +44,10 @@ class AnnouncementForm extends React.Component {
 				text: this.state.text
 			}
 		);
+		this.setState({
+			announcer: '',
+			text: ''
+		});
 	}
 
 	render() {
@@ -66,6 +70,7 @@ class AnnouncementForm extends React.Component {
 						className="form-control"
 						id="text"
 						placeholder="Example: Come join the fun!"
+						value={this.state.text}
 						onChange={this.handleTextChange}/>
 					<small className="form-text text-muted">
 						Sell people on your event or occasion!
