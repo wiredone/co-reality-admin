@@ -1,9 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { useFirestoreConnect } from 'react-redux-firebase';
+import { useFirestore, useFirestoreConnect } from 'react-redux-firebase';
 import { isRoomValid } from './validation';
 
-export default function ManageRooms() {
+function ManageRooms() {
+	const firestore = useFirestore();
+
 	useFirestoreConnect('rooms');
 	const rooms = useSelector(state => state.firestore.ordered.rooms);
 	if (rooms === undefined) {
@@ -35,10 +38,28 @@ export default function ManageRooms() {
 							}
 						</a>
 						<span>- {room.subtitle}</span>
-						PLACEHOLDER: OPEN/CLOSE BUTTON AND FORM
+						<form onSubmit={event => {
+							firestore
+								.collection('rooms')
+								.doc(room.id)
+								.update({ open: !room.open });
+							event.preventDefault();
+						}}>
+							<button type="submit" className="btn btn-primary btn-sm">
+								{room.open ? "Close" : "Open"} {room.name}
+							</button>
+						</form>
 					</li>
 				)}
 			</ul>
 		</div>
 	);
 }
+
+ManageRooms.propTypes = {
+	firestore: PropTypes.shape({
+    	update: PropTypes.func.isRequired
+	})
+}
+
+export default ManageRooms;

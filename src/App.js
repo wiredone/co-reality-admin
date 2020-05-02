@@ -26,12 +26,12 @@ export default class App extends React.Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     const valid = this.state.password === PASSWORD;
     this.setState({
       loggedIn: valid,
       invalid: !valid
     });
-    event.preventDefault();
   }
 
   render() {
@@ -42,24 +42,24 @@ export default class App extends React.Component {
             <div className="col">
               <h2>Godyssey: Party Admin Tool - Login</h2>
               <form onSubmit={this.handleSubmit}>
-                <div class="form-group">
-                  <label for="password">
+                <div className="form-group">
+                  <label htmlFor="password">
                     Password
                   </label>
                   <input onChange={this.handleChange}
-                    class={"form-control" + (this.state.invalid ? " is-invalid" : "")}
+                    className={"form-control" + (this.state.invalid ? " is-invalid" : "")}
                     id="password"
                     placeholder="Password"/>
                   {this.state.invalid &&
-                    <div class="invalid-feedback">
+                    <div className="invalid-feedback">
                       Incorrect password
                     </div>
                   }
-                  <small id="emailHelp" class="form-text text-muted">
+                  <small id="emailHelp" className="form-text text-muted">
                     Please enter the password. You can ask in <a href="https://co-reality.slack.com/archives/C012GKX7DC7">#ops on Slack</a> or the Whatsapp group
                   </small>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Submit</button>
               </form>
             </div>
           </div>
