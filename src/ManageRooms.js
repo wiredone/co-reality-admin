@@ -18,7 +18,7 @@ function ManageRooms() {
 			<div className="card-header">
 				<h2>Manage Rooms</h2>
 				<small>
-					A closed room gets a red badge in the room list and appears red in the clickable map.
+					A closed room gets a dark badge in the room list and appears red in the clickable map.
 					<br/>
 					An open room gets a green badge in the room list and appears blue in the clickable map.
 					<br/>
@@ -43,7 +43,7 @@ function ManageRooms() {
 							{room.open ?
 								<span className="badge badge-success mx-2">OPEN</span>
 							:
-								<span className="badge badge-danger mx-2">CLOSED</span>
+								<span className="badge badge-dark mx-2">CLOSED</span>
 							}
 						</a>
 						<span>- {room.subtitle}</span>
