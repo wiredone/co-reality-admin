@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "co-reality-map"
+  },
+  "targets": {
+    "co-reality-map": {
+      "hosting": {
+        "godyssey": [
+          "godyssey"
+        ]
+      }
+    }
+  }
+}
