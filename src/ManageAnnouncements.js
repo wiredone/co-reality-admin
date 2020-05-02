@@ -19,6 +19,7 @@ export default function ManageAnnouncements() {
 		<div className="card" id="announcements">
 			<div className="card-header">
 				<h2>Manage Announcements</h2>
+				<small>Announcements you make will appear to everyone instantly. There is no need for people to refresh or reload their page.</small>
 			</div>
 			<div className="card-body">
 				<AnnouncementForm />
