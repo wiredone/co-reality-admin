@@ -20,7 +20,7 @@ export default function App() {
           <p>
             Announcements you make appear to everyone instantly. There is no need for people to refresh or reload their page.
           </p>
-          <div class="alert alert-danger" role="alert">
+          <div className="alert alert-danger" role="alert">
             Hiding & showing rooms, tech support, & room updates: <a href="https://co-reality.slack.com/archives/C012GKX7DC7">#ops on Slack</a>, the Whatsapp group, or Chris on +1 415-758-8161
           </div>
         </div>
