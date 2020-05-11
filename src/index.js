@@ -7,15 +7,20 @@ import { createStore, combineReducers, compose } from 'redux';
 import { reduxFirestore, firestoreReducer, createFirestoreInstance } from 'redux-firestore';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/auth';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from './App';
+import { API_KEY } from './secrets';
 import * as serviceWorker from './serviceWorker';
 
-const firebaseConfig = {projectId: 'co-reality-map'};
+const firebaseConfig = {
+  apiKey: API_KEY,
+  projectId: 'co-reality-map'
+};
 const rfConfig = {}; // optional redux-firestore Config Options
 
 const rrfConfig = {
@@ -24,6 +29,7 @@ const rrfConfig = {
 }
 
 firebase.initializeApp(firebaseConfig);
+firebase.auth();
 
 const createStoreWithFirebase = compose(
 	reduxFirestore(firebase, rfConfig),
