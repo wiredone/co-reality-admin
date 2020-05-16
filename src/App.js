@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ManageRooms from './ManageRooms';
+import ManageChats from './ManageChats';
 import ManageAnnouncements from './ManageAnnouncements';
 
 import { PASSWORD } from './secrets';
@@ -59,7 +59,7 @@ export default class App extends React.Component {
                     </div>
                   }
                   <small id="emailHelp" className="form-text text-muted">
-                    Please enter the password. You can ask in <a href="https://co-reality.slack.com/archives/C012GKX7DC7">#ops on Slack</a> or the Whatsapp group
+                    Please enter the password. You can ask for the password in <a href="https://co-reality.slack.com/archives/C012GKX7DC7">#tech-team on Slack</a>.
                   </small>
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
@@ -79,10 +79,10 @@ export default class App extends React.Component {
               Parties are real. Is God real? Are you real? What is it for? Let's have some fun!
             </p>
             <p>
-              Here you can send announcements and toggle rooms to show open and closed.
+              Here you can send & delete announcements and chat messages.
             </p>
             <div className="alert alert-danger" role="alert">
-              Hiding & showing rooms, tech support, & room updates: <a href="https://co-reality.slack.com/archives/C012GKX7DC7">#ops on Slack</a> or the Whatsapp group
+              Hiding & showing rooms, tech support, & room updates: <a href="https://co-reality.slack.com/archives/C012GKX7DC7">#tech-team on Slack</a>.
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@ export default class App extends React.Component {
             <ManageAnnouncements />
           </div>
           <div className="col-md-6">
-            <ManageRooms />
+            <ManageChats />
           </div>
         </div>
       </div>

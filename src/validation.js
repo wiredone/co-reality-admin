@@ -4,11 +4,6 @@ function validDate(date) {
 
 }
 
-function validBool(bool) {
-	return bool !== undefined &&
-		(bool === true || bool === false);
-}
-
 export function isAnnouncementValid(announcement) {
 	return announcement !== undefined &&
 		announcement.id !== undefined &&
@@ -18,15 +13,11 @@ export function isAnnouncementValid(announcement) {
 		announcement.text !== undefined;
 }
 
-export function isRoomValid(room) {
-	return room !== undefined &&
-		room.id !== undefined &&
-		validBool(room.open) &&
-		validBool(room.on_map) &&
-		validBool(room.on_list) &&
-		typeof room.order === 'number' &&
-		room.path !== undefined &&
-		room.url !== undefined &&
-		room.title !== undefined &&
-		room.subtitle !== undefined;
+export function isChatValid(chat) {
+	return chat !== undefined &&
+		chat.id !== undefined &&
+		chat.name !== undefined &&
+		chat.ts_utc !== undefined &&
+		validDate(chat.ts_utc) &&
+		chat.text !== undefined;
 }
