@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 const { PASSWORD } = require('./secrets');
 
-exports.checkPassword = functions.https.onCall((data, context) => {
+exports.checkAdminPassword = functions.https.onCall((data, context) => {
   // Case-insensitive first character for iDevices
   if (data.password === undefined ||
       data.password !== PASSWORD ||

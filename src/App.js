@@ -34,8 +34,8 @@ class App extends React.Component {
       });
     };
 
-    const checkPassword = this.props.firebase.functions().httpsCallable('checkPassword');
-    checkPassword({password: this.state.password})
+    const checkAdminPassword = this.props.firebase.functions().httpsCallable('checkAdminPassword');
+    checkAdminPassword({password: this.state.password})
       .then(() => setValid(true))
       .catch(() => setValid(false));
   }
