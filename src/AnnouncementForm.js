@@ -9,11 +9,13 @@ class AnnouncementForm extends React.Component {
 		super(props);
 		this.state = {
 			announcer: '',
-			text: ''
+			text: '',
+			imageUrl: '',
 		}
 
 		this.handleAnnouncerChange = this.handleAnnouncerChange.bind(this);
 		this.handleTextChange = this.handleTextChange.bind(this);
+		this.handleImageUrlChange = this.handleImageUrlChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
@@ -31,7 +33,13 @@ class AnnouncementForm extends React.Component {
 	handleTextChange(event) {
 		this.setState({
 			text: event.target.value
-		})
+		});
+	}
+
+	handleImageUrlChange(event) {
+		this.setState({
+			imageUrl: event.target.value
+		});
 	}
 
 	handleSubmit(event) {
@@ -41,12 +49,14 @@ class AnnouncementForm extends React.Component {
 			.add({
 				ts_utc: firebase.firestore.Timestamp.fromDate(new Date()),
 				announcer: this.state.announcer,
-				text: this.state.text
+				text: this.state.text,
+				imageUrl: this.state.imageUrl,
 			}
 		);
 		this.setState({
 			announcer: '',
-			text: ''
+			text: '',
+			imageUrl: '',
 		});
 	}
 
@@ -74,6 +84,17 @@ class AnnouncementForm extends React.Component {
 						onChange={this.handleTextChange}/>
 					<small className="form-text text-muted">
 						Sell people on your event or occasion!
+					</small>
+
+					<label htmlFor="imageUrl"/>
+					<input type="text"
+						className="form-control"
+						id="imageUrl"
+						placeholder="Example: https://imgur.com/f3412"
+						value={this.state.imageUrl}
+						onChange={this.handleImageUrlChange}/>
+					<small className="form-text text-muted">
+						OPTOINAL: URL to an image to include in your announcement. You must upload it elsewhere (eg. Google Docs) and grab its URL.
 					</small>
 				</div>
 				<button type="submit" disabled={!this.valid()} className="btn btn-primary">Announce It!</button>

@@ -32,6 +32,11 @@ export default function ManageAnnouncements() {
 						<b>{announcement.announcer}</b>: {formatUtcSeconds(announcement.ts_utc)}
 						<br/>
 						{announcement.text}
+						{announcement.imageUrl &&
+							<a href={announcement.imageUrl} target="_blank">
+								<img className="img-fluid" src={announcement.imageUrl} title={"Announcement Image: " + announcement.imageUrl} />
+							</a>
+						}
 						<form onSubmit={event => {
 							if (window.confirm(
 								`WARNING: You are about to delete announcement by ${announcement.announcer} @ ${formatUtcSeconds(announcement.ts_utc)}:` +
