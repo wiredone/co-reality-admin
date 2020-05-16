@@ -5,6 +5,9 @@
   "targets": {
     "co-reality-map": {
       "hosting": {
+        "co-reality-admin": [
+          "co-reality-admin"
+        ],
         "godyssey": [
           "godyssey"
         ]

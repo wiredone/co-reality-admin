@@ -4,6 +4,15 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": [{
+    "target": "co-reality-admin",
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  },
+  {
     "target": "godyssey",
     "public": "build",
     "ignore": [
