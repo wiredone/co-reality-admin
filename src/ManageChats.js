@@ -31,7 +31,7 @@ function ManageChats() {
 				{chats
 					.filter(isChatValid)
 					.concat()
-					.sort((a, b) => a.order - b.order)
+					.sort((a, b) => b.ts_utc - a.ts_utc)
 					.map(chat =>
 					<li className="list-group-item" key={chat.id}>
 						<b>{chat.name}</b>: {formatUtcSeconds(chat.ts_utc)}
@@ -39,7 +39,7 @@ function ManageChats() {
 						{chat.text}
 						<form onSubmit={event => {
 							if (window.confirm(
-								`WARNING: You are about to delete chat by ${chat.user} @ ${formatUtcSeconds(chat.ts_utc)}:` +
+								`WARNING: You are about to delete chat by ${chat.name} @ ${formatUtcSeconds(chat.ts_utc)}:` +
 								"\n" +
 								chat.text +
 								"\n\n" +
