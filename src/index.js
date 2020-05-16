@@ -8,6 +8,7 @@ import { reduxFirestore, firestoreReducer, createFirestoreInstance } from 'redux
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import 'firebase/functions';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
 
 import 'bootstrap';
@@ -30,6 +31,12 @@ const rrfConfig = {
 
 firebase.initializeApp(firebaseConfig);
 firebase.auth();
+
+if (window.location.hostname === "localhost") {
+  firebase.functions().useFunctionsEmulator('http://localhost:5000');
+} else {
+  firebase.functions();
+}
 
 const createStoreWithFirebase = compose(
 	reduxFirestore(firebase, rfConfig),

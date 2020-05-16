@@ -1,11 +1,10 @@
 import React from 'react';
+import { withFirebase } from 'react-redux-firebase';
 
 import ManageChats from './ManageChats';
 import ManageAnnouncements from './ManageAnnouncements';
 
-import { PASSWORD } from './secrets';
-
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,14 +26,18 @@ export default class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // Workaround for mobile devices that capitalise first letter of password
-    const valid =
-      this.state.password === PASSWORD ||
-      this.state.password.charAt(0).toLowerCase() + this.state.password.substring(1) === PASSWORD;
-    this.setState({
-      loggedIn: valid,
-      invalid: !valid
-    });
+
+    const setValid = (valid) => {
+      this.setState({
+        loggedIn: valid,
+        invalid: !valid
+      });
+    };
+
+    const checkPassword = this.props.firebase.functions().httpsCallable('checkPassword');
+    checkPassword({password: this.state.password})
+      .then(() => setValid(true))
+      .catch(() => setValid(false));
   }
 
   render() {
@@ -98,3 +101,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default withFirebase(App);
