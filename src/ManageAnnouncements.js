@@ -33,8 +33,8 @@ export default function ManageAnnouncements() {
 						<br/>
 						{announcement.text}
 						{announcement.imageUrl &&
-							<a href={announcement.imageUrl} target="_blank">
-								<img className="img-fluid" src={announcement.imageUrl} title={"Announcement Image: " + announcement.imageUrl} />
+							<a href={announcement.imageUrl} target="_blank" rel="noopener noreferrer">
+								<img className="img-fluid" src={announcement.imageUrl} title={"Announcement Image: " + announcement.imageUrl} alt={"Announcement Image: " + announcement.imageUrl} />
 							</a>
 						}
 						<form onSubmit={event => {
