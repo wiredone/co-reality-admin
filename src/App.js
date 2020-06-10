@@ -4,6 +4,8 @@ import { withFirebase } from 'react-redux-firebase';
 import ManageChats from './ManageChats';
 import ManageAnnouncements from './ManageAnnouncements';
 
+import { PARTY_NAME } from './secrets';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -35,7 +37,7 @@ class App extends React.Component {
     };
 
     const checkAdminPassword = this.props.firebase.functions().httpsCallable('checkAdminPassword');
-    checkAdminPassword({password: this.state.password})
+    checkAdminPassword({config: PARTY_NAME, password: this.state.password})
       .then(() => setValid(true))
       .catch(() => setValid(false));
   }
